@@ -63,3 +63,42 @@ a, a:visited {
 .card {
     border-radius: 50px 50px 0 0;
 }
+
+/*Step 7: Edit the css for the card class to match our example. Achieve this by using a flex-property to specify an initial “size” of 450px.  You need to think about this from a “flex” perspective and realize that flex-direction will affect the size of the elements.  You can see that in the mobile view they all have the same width.*/
+.card {
+    /*set width to constantly be 450px and can't grow or shrink*/
+    flex: 0 0 450px;
+}
+
+/*Step 8: Edit the css for the pricing class to match our example. You should use flex and the cards should be centered both horizontally and vertically.*/
+.pricing {
+    /*make pricing a flexbox*/
+    display: flex;
+    /*makes it so size set in card will affect width*/
+    flex-direction: row;
+    /*centers content on page*/
+    justify-content: center;
+    /*wraps on page so doesn't overflow off screen*/
+    flex-wrap: wrap;
+}
+
+/*Step 9: Style the images in the gallery class. These elements will have a solid 10px border with a color of #50C7C7, 10px margin on all four sides and a width of 300px.*/
+/*get images inside the gallery class (logo image unaffected)*/
+.gallery img {
+    /*add specified styling*/
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/*Step 10: Edit the css for the gallery class to use flex to match our example.*/
+.gallery {
+    /*make gallery a flexbox*/
+    display: flex;
+    /*organizes items horizontally*/
+    flex-direction: row;
+    /*wraps on page so doesn't overflow off screen*/
+    flex-wrap: wrap;
+    /*centers content on page*/
+    justify-content: center;
+}
