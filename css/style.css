@@ -130,10 +130,10 @@ a, a:visited {
 
     /*Step 13: Modify the first header (the one not inside main) so that it remains visible at the top of the screen even as we scroll down. Make sure that it is always visible.*/
     body > header {
-        /*make the header at the top constant even when scrolled but also able to interact with other elements*/
+        /*make the header sticky*/
         position: sticky;
-        /*make it span across the entire page*/
-        width: 100%;
+        /*make it stay at the top of the page*/
+        top: 0px;
     }
 }
 
