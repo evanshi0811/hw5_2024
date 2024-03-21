@@ -1,6 +1,6 @@
-/*Step 1: Animate the logo with keyframes. It should start at a width of 25px and grow to 475px.  It should also start with an opacity of 0 and end with an opacity of 1. The animation should take 5 seconds and only happen when the page is loaded.*/
+/*Step 1: Animate the logo with keyframes. It should start at a width of 25px and grow to 475px. It should also start with an opacity of 0 and end with an opacity of 1. The animation should take 5 seconds and only happen when the page is loaded.*/
 /*create animation*/
-@keyframes mymove {
+@keyframes logogrow {
     /*starting state*/
     from {
         width: 25px;
@@ -14,10 +14,10 @@
 }
 /*add animation to logo*/
 #logo {
-    animation: mymove 5s 1;
+    animation: logogrow 5s 1;
 }
 
-/*Step 2: Edit the body element to use the Poppins font (using Google fonts) with serif as a backup.  It should also use the image “concrete_seamless.png” as a background-image with a backup color of #f1f1f1.*/
+/*Step 2: Edit the body element to use the Poppins font (using Google fonts) with serif as a backup. It should also use the image “concrete_seamless.png” as a background-image with a backup color of #f1f1f1.*/
 body {
     /*Poppins font with serif as backup*/
     font-family: "Poppins", serif;
@@ -50,7 +50,7 @@ a, a:visited {
     color: blue;
 }
 
-/*Step 6: Identify the proper selector to style ONLY those header elements that are direct children of a card class.  The required styling is the following: background: #288088, solid 2px border using #45ADAD, 20px of padding on the top and the bottom, 50px border-radius on the top left and right corners.*/
+/*Step 6: Identify the proper selector to style ONLY those header elements that are direct children of a card class. The required styling is the following: background: #288088, solid 2px border using #45ADAD, 20px of padding on the top and the bottom, 50px border-radius on the top left and right corners.*/
 /*use child selector to get direct children of card class*/
 .card > header {
     /*add specified styling*/
@@ -64,7 +64,7 @@ a, a:visited {
     border-radius: 50px 50px 0 0;
 }
 
-/*Step 7: Edit the css for the card class to match our example. Achieve this by using a flex-property to specify an initial “size” of 450px.  You need to think about this from a “flex” perspective and realize that flex-direction will affect the size of the elements.  You can see that in the mobile view they all have the same width.*/
+/*Step 7: Edit the css for the card class to match our example. Achieve this by using a flex-property to specify an initial “size” of 450px. You need to think about this from a “flex” perspective and realize that flex-direction will affect the size of the elements. You can see that in the mobile view they all have the same width.*/
 .card {
     /*set width to constantly be 450px and can't grow or shrink*/
     flex: 0 0 450px;
@@ -101,4 +101,114 @@ a, a:visited {
     flex-wrap: wrap;
     /*centers content on page*/
     justify-content: center;
+}
+
+/*Steps 11-13 only apply for screen sizes greater than 900px*/
+@media only screen and (min-width: 900px) {
+
+    /*Step 11: Edit the css for the header tag (all instances) and the nav_links class to match our example using flex-properties. The logo should be as far to the left as possible and the links as far to the right as possible.*/
+    header {
+        /*make it so image and navlinks are in a row*/
+        flex-direction: row;
+        /*make it so image and navlinks are as far apart as possible*/
+        justify-content: space-between;
+    }
+    .nav_links {
+        /*make it so navlinks are in a row*/
+        flex-direction: row;
+    }
+
+    /*Step 12: Edit the css for the pricing and card classes to match our example. Part of achieving this is by using a flex-property to specify a “size” of 275px.*/
+    .pricing {
+        /*make price boxes centered on the same row*/
+        align-items: center;
+    }
+    .card {
+        /*set width to constantly be 275px and can't grow or shrink*/
+        flex: 0 0 275px;
+    }
+
+    /*Step 13: Modify the first header (the one not inside main) so that it remains visible at the top of the screen even as we scroll down. Make sure that it is always visible.*/
+    body > header {
+        /*make the header at the top constant even when scrolled but also able to interact with other elements*/
+        position: sticky;
+        /*make it span across the entire page*/
+        width: 100%;
+    }
+}
+
+/*Step 14: The logo should appear but not be animated if prefers-reduced-motion is selected in the accessibility preferences.*/
+@media (prefers-reduced-motion: reduce) {
+    /*turns off logo animation*/
+    #logo {
+        animation: none;
+    }
+}
+
+/*Steps 15-21 only applies for the print display*/
+@media print {
+
+    /*Step 15: Change the font on your body to Arial with a backup value of Helvetica*/
+    body {
+        /*Arial font with Helvetica as backup*/
+        font-family: Arial, Helvetica;
+    }
+
+    /*Step 16: The background image should be removed*/
+    body {
+        background-image: none;
+    }
+
+    /*Step 17: Edit the nav/nav_links elements so that they are spaced according to the image above*/
+    nav {
+        /*make the nav span the entire header*/
+        width: 100%;
+    }
+    .nav_links {
+        /*organizes items horizontally*/
+        flex-direction: row;
+        /*space the nav_links out properly*/
+        justify-content: space-around;
+    }
+
+    /*Step 18: Edit the pricing class so that the elements align along the bottom. As long as it aligns along the bottom we don't care if the cards aren't the same height.*/
+    .pricing {
+        /*organizes items horizontally*/
+        flex-direction: row;
+        /*makes elements aligned along the bottom*/
+        align-items: flex-end;
+        /*makes it so theres only one row*/
+        flex-wrap: nowrap;
+    }
+
+    /*Step 19: The card elements should have a solid border 2px of #45ADDD and use flex-basis of 325px.*/
+    .card {
+        /*added specified border*/
+        border: 2px solid #45ADDD;
+        /*set flex-basis to 325px and made flex-grow and flex-shrink 1, so the cards can shrink and grow appropriately to fit on the page*/
+        flex: 1 1 325px;
+    }
+
+    /*Step 20: No part of the gallery should be visible*/
+    /*make gallery photos invisible*/
+    .gallery {
+        display: none;
+    }
+    /*make gallery text invisible*/
+    #gallery {
+        display: none;
+    }
+
+    /*Step 21: Without using list-style-type add the thumbs up entity as shown in the cards*/
+    /*get the third li in each card*/
+    .card li:nth-child(2)::after {
+        /*add a thumbs up emoji*/
+        content: "\1F44D";
+    }
+
+    /*Additional thing I added, removed the animation for print view so the logo size and opacity would be the same for every print view (could have a different size or opacity if the animation was still playing)*/
+    /*turns off logo animation*/
+    #logo {
+        animation: none;
+    }
 }
