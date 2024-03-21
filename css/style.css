@@ -200,9 +200,9 @@ a, a:visited {
     }
 
     /*Step 21: Without using list-style-type add the thumbs up entity as shown in the cards*/
-    /*get the third li in each ul*/
+    /*get the second li in each ul*/
     ul li:nth-child(2)::after {
-        /*add a thumbs up emoji*/
+        /*add a thumbs up emoji after*/
         content: "\1F44D";
     }
 
